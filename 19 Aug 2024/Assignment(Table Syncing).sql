@@ -15,7 +15,7 @@ CREATE TABLE DesTable (
     Name NVARCHAR(100),
     Description NVARCHAR(255),
     recCreated DATETIME DEFAULT GETDATE(),
-    IsDeleted BIT DEFAULT 0 -- For soft deleting flag
+    IsDeleted BIT DEFAULT 0 
 );
 
 

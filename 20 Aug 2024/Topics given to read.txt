@@ -1,0 +1,47 @@
+Azure Data Factory (ADF) Overview
+
+Azure Data Factory (ADF) is a cloud-based data integration service that allows you to create, schedule, and orchestrate data workflows, 
+known as pipelines, to move and transform data from various sources to destinations.
+
+Key Concepts:
+
+ADF Pipelines:
+
+A pipeline in ADF is a logical grouping of activities that together perform a task. It can include activities like data movement, data transformation, or control flow. Pipelines are used to manage data flows in a structured and reusable manner.
+Copy Activity:
+
+The Copy Activity in ADF is used to copy data from a source to a destination. It supports a wide variety of data sources (e.g., SQL databases, Blob storage,
+ and more). This activity is typically used when you need to move data between storage solutions or transform data in transit.
+
+Expression Builder:
+
+The Expression Builder in ADF is a tool that allows you to create expressions using a range of functions, operators, and system variables. Expressions are often used to dynamically generate values for activity properties, such as file paths, based on runtime parameters.
+Variables and Parameters:
+
+Parameters: These are inputs to pipelines or activities that remain constant during the pipeline run. Parameters are typically set at the start of the pipeline and do not change during its execution.
+Variables: These are used to store values that can change during the execution of a pipeline. Variables are useful when you need to keep track of state or intermediate results within a pipeline.
+Bulk Insert:
+
+Bulk Insert in the context of ADF refers to the process of loading large amounts of data efficiently into a destination table or storage. It is often used in scenarios where you need to import data quickly, reducing the overhead compared to row-by-row insert operations.
+Relations Between Them in ADF:
+Pipeline and Copy Activity:
+
+A pipeline can include a Copy Activity to move data from a source to a destination. For instance, a pipeline could have a Copy Activity that copies data from an on-premises SQL database to Azure Blob Storage.
+Expression Builder and Copy Activity:
+
+The Expression Builder can be used within a Copy Activity to dynamically construct the file path or table name at runtime. For example, you might use the Expression Builder to generate a file name based on the current date.
+Variables and Parameters in Pipelines:
+
+Parameters can be used to pass static configuration data into a pipeline, such as the source file location or destination table name. Variables, on the other hand, can be updated within the pipeline to keep track of loop counters or to dynamically adjust data processing paths.
+Bulk Insert with Copy Activity:
+
+When performing a bulk insert, a Copy Activity can be configured to load large datasets into a destination table efficiently. Parameters might be used to specify the table name or storage account, while variables could track the status or progress of the data load.
+Real-Life Example:
+Imagine a retail company that collects daily sales data from various stores. This data needs to be aggregated and stored in a central data warehouse for reporting purposes.
+
+Pipeline: You create a pipeline in ADF to automate the data flow. This pipeline will run every night.
+Copy Activity: A Copy Activity within the pipeline copies the daily sales data from each store's SQL database into Azure Blob Storage.
+Expression Builder: Use the Expression Builder to generate a dynamic file name in Blob Storage based on the date, such as sales_20240819.csv.
+Variables and Parameters: Parameters are used to define the source and destination paths, while variables keep track of which stores' data has been processed.
+Bulk Insert: Finally, the data in the Blob Storage is bulk-inserted into a table in the central data warehouse for analysis.
+In this setup, the pipeline orchestrates the entire process, the Copy Activity moves data, the Expression Builder dynamically handles paths, and bulk insert ensures efficient data loading.
