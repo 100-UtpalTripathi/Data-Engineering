@@ -1,0 +1,3 @@
+astro dev init -v 8.7.0 -n data-training-airflow-demo  #initialise the astro project
+astro dev start #start the airflow
+astro dev stop #stop the airflow
